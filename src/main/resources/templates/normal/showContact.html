@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+<head>
+<meta charset="UTF-8">
+<title>Contact List</title>
+</head>
+<body>
+    <section >
+       <div class="p-5 mr-3 ml-3 shadow bg-transparent text-dark">
+          <div class="card-body  shadow bg-transparent text-dark">
+             <h2 class="text-center"><b>YOUR CONTACTS</b></h2>
+             
+             <div class="search-container my-4">
+                
+                <input onKeyup="search()" id="search-input" type="text" class="form-control" placeholder="search your contact"/>
+                 <div class="search-result">
+                 </div>
+             </div>
+             <div class="table-responsive">
+              <table class="table table-hover">
+  <thead>
+    <tr >
+      <th scope="col">#ID</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone No</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="c: ${contact}">
+      <th scope="row" th:text="${'SCM2020'+c.conid}"></th>
+      <td th:text="${c.name}"></td>
+      <td >
+         <a th:href="@{/user/viewcon/{conid}( conid=${c.conid})}">
+            <span th:text="${c.mail}">
+            
+            </span>
+         
+         </a>
+      </td>
+      <td th:text="${c.phone}"></td>
+      <td>
+      <a th:href="@{/user/delete/{id}/{conid}(id=${user.email}, conid=${c.conid})}"><button class="btn gt btn-danger btn-sm">Delete</button></a>
+      <a th:href="@{/user/update/{id}/{conid}(id=${user.email}, conid=${c.conid})}"> <button class="btn gt btn-primary btn-sm">Update</button></a>
+    </tr>
+  </tbody>
+</table>
+</div>
+  <nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center ">
+    <li class="page-item disabled">
+      <a th:if="${curpage != 0}" class="page-link" href="#" tabindex="-1" th:href="@{/user/showContact/{page}/{id}(id=${user.email}, page=${curpage-1})}">Previous</a>
+    </li>
+    <li th:classappend="${curpage==i-1?'active':''}" th:each="i: ${#numbers.sequence(1,totalpage)}" class="page-item"><a class="page-link" href="#" th:href="@{/user/showContact/{page}/{id}(id=${user.email},page=${i-1})}"><span th:text="${i}"></span></a></li>
+   
+      <a th:if="${curpage+1 != totalpage}" class="page-link" href="#" th:href="@{/user/showContact/{page}/{id}(id=${user.email}, page=${curpage+1})}">Next</a>
+    </li>
+  </ul>
+</nav>
+          </div>
+       </div>
+    </section>
+</body>
+</html>

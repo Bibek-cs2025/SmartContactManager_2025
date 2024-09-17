@@ -1,0 +1,169 @@
+@charset "UTF-8";
+body{
+	background: #e2e2e2 !important;
+	align-items:center;
+	justify-content: center;
+	
+}
+
+.bg-primary{
+
+	background: #009688 !important;
+}
+.banner{
+	width:100%;
+	height:93vh;
+	background:linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8)),url(../image/banner.jpg);
+	background-size:cover;
+	color:white;
+}
+   button:hover{
+         background: #009688 !important;   
+        }
+.my-card{
+	padding:25px;
+    background: #FFFFFF;
+}   
+button{     
+margin:10px;}
+
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
+}
+.content{
+	margin-left:20%;
+}
+
+.item{
+	 display:block;
+	 width:100%;
+	 padding:10px 25px;
+	 text-decoration:none;
+	 color:gray;
+}
+.divider{
+	height: .5px;
+	width:100%;
+	background:#e2e2e2;
+}
+.item:hover{
+	background:#e2e2e2;
+}
+.offcanvas-title{
+	padding:10px 25px;
+}
+#a{
+	padding:7px;
+}
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+font-size: 1rem;
+line-height: 2.15;
+padding-left: .75em;
+padding-right: .75em;
+}
+.card-registration .select-arrow {
+top: 13px;
+}
+.gt{
+	margin:0px;
+}
+.search-container{
+	position: relative;
+}
+.search-result{
+	position:absolute;
+	background:white;
+	width:100%;
+	padding:10px;
+	border:2px solid black;
+	display:none;
+}
+.cos{
+	width:330px;
+	background:#fff;
+	border-radius:5px;
+	text-align:center;
+	padding:50px,35px,10px,35px;
+	 
+}
+
+.cos .form-outer{
+	width:100%;
+	overflow:hidden;
+}
+.cos .form-outer form{
+	display:flex;
+	width: 400%;
+	}
+.cos .form-outer form .page{
+	width:25%;
+	}
+.cos .form-outer form .page .title{
+	text-align:left;
+	font-size:25px;
+	font-weight:500;
+}	
+.cos .form-outer form .page .field{
+	height:45px;
+	width:330%;
+	margin:45px 0;
+	display:flex;
+	position:relative;
+}
+.cos .form-outer form .page .field input{
+	
+	
+	border:1px solid lightgrey;
+	border-radius:5px;
+	font-size:18px;
+	padding-left:15px;
+}
+.cos .form-outer form .page .field .label{
+	position:absolute;
+	top:-30px;
+	font-weight:500;
+}
+
+.cos .form-outer form .page .field button{
+	
+	width:120px;
+	height:40px;
+	margin-top: -20px;
+	border:none;
+	background:#d43f8d;
+	border-radius:5px;
+	color:#fff;
+	font-size:18px;
+	font-weight:500;
+	letter-spacing:1px;
+	text-transform:uppercase;
+	cursor: pointer;
+	transition:0.3s ease;
+}
+.cos .form-outer form .page .field button:hover{
+	background:#000;
+}
+.cos .form-outer form .page .btns button{
+	margin-top:-20px!important;
+}
+.cos .form-outer form .page .btns button .prev{
+	margin-right:3px;
+	font-size:17px;
+}
+.cos .form-outer form .page .btns button .next{
+	margin-left:3;
+	font-size:17px;
+}
+.emailvalid{
+	display:none;
+}
+.success{
+		display:none;
+}
+.passvalid{
+		display:none;
+}

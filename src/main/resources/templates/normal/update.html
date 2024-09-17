@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+<head>
+<meta charset="UTF-8">
+<title>Add Contact</title>
+</head>
+<body>
+    <section class="h-100 bg-dark">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col">
+        <div class="card card-registration my-4">
+          <div class="row g-0">
+            <div class="col-xl-6 d-none d-xl-block">
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img4.webp"
+                alt="Sample photo" class="img-fluid"
+                style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;" />
+            </div>
+            <div class="col-xl-6">
+              <div class="card-body p-md-5 text-black">
+                <h3 class="mb-5 text-uppercase">Contact Update form</h3>
+                 <div th:if="${session.message}"  th:classappend="${session.message.type}" class="alert " role="alert">
+                  <p class="text-center" th:text="${session.message.content}"></p>
+                  
+                  <th:block th:text="${@service.removemsg()}"></th:block>
+                </div>
+          <form action="" th:action="@{/user/updateform/{id}/{conid}(id=${user.email}, conid=${contact.conid})}" enctype="multipart/form-data" method="post" th:object="${contact}">
+                <div class="row">
+                  <div class="col-md-6 mb-4">
+                    <div data-mdb-input-init class="form-outline">
+                      <input type="text" name="name" th:classappend="${#fields.hasErrors('name')?'is-invalid':''}" id="form3Example1m" class="form-control form-control-lg" th:field="${contact.name}" required/>
+                       <div  th:each="e: ${#fields.errors('name')}" th:text="${e}" id="validationServer03Feedback" class="invalid-feedback">
+                             </div>
+                    </div>
+                    
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <div data-mdb-input-init class="form-outline">
+                      <input type="text" name="secame" id="form3Example1n" class="form-control form-control-lg" placeholder="Last name" th:field="${contact.secame}" required/>
+
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6 mb-4">
+                    <div data-mdb-input-init class="form-outline">
+                      <input type="email" name="mail"  id="form3Example1m1" th:classappend="${#fields.hasErrors('mail')?'is-invalid':''}" class="form-control form-control-lg" th:field="${contact.mail}" placeholder="Enter Mail Id" required/>
+                        <div  th:each="e: ${#fields.errors('mail')}" th:text="${e}" id="validationServer03Feedback" class="invalid-feedback">
+                             </div>                      
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <div data-mdb-input-init class="form-outline">
+                      <input type="text" name="phone"  id="form3Example1n1" th:classappend="${#fields.hasErrors('phone')?'is-invalid':''}" class="form-control form-control-lg" th:field="${contact.phone}" placeholder="Enter Mobile No" required/>
+                      <div  th:each="e: ${#fields.errors('phone')}" th:text="${e}" id="validationServer03Feedback" class="invalid-feedback">
+                             </div> 
+                      
+                    </div>
+                  </div>
+                </div>
+
+                <div data-mdb-input-init class="form-outline mb-4">
+                  <input type="text" name="work" id="form3Example8" th:field="${contact.work}" class="form-control form-control-lg" />
+                  <label class="form-label" for="form3Example8">Work or Address</label>
+                </div>
+
+               
+
+                 <div class="form-group">
+                      <label for="textArea_field">Contact Details</label>
+                         <textarea rows="10" name="description" th:field="${contact.description}" placeholder="Enter About Yourself" id="textArea_field" class="form-control"></textarea>
+                       </div>
+                      
+               <div class="d-flex justify-content-end pt-3">
+                  <button type="reset" data-mdb-button-init data-mdb-ripple-init class="btn btn-light btn-lg">Reset all</button>
+                  <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-warning btn-lg ms-2">SUBMIT</button>
+                </div>
+            </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Place the first <script> tag in your HTML's <head> -->
+<script src="https://cdn.tiny.cloud/1/9qeyw6pof15hcdpd3u3xup4vk40qnd2o3a9n1mpclk5zry1h/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+
+<!-- Place the following <script> and <textarea> tags your HTML's <body> -->
+<script>
+  tinymce.init({
+    selector: 'textarea',
+    plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate ai mentions tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss markdown',
+    toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+    tinycomments_mode: 'embedded',
+    tinycomments_author: 'Author name',
+    mergetags_list: [
+      { value: 'First.Name', title: 'First Name' },
+      { value: 'Email', title: 'Email' },
+    ],
+    ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant")),
+  });
+</script>
+
+</section>
+</body>
+</html>
